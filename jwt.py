@@ -7,7 +7,7 @@ from fastapi import Request, HTTPException
 
 
 
-def generate_token(data: dict, expires_delta: Optional[timedelta] = None):
+def get_token(data: dict, expires_delta: Optional[timedelta] = None):
         to_encode = data.copy()
         if expires_delta:
             expire = datetime.utcnow() + expires_delta

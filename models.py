@@ -10,7 +10,7 @@ class User(Base):
     password = Column(String, nullable=False)
 
 # DB 제품 데이터
-class Product(Base):
+class product(Base):
     __tablename__ = 'product'
     pd_id = Column(Integer, primary_key=True, autoincrement=True)
     user_id = Column(Integer, nullable=False)
