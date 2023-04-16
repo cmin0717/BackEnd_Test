@@ -16,3 +16,8 @@ def get_db():
         print('error 발생!')
     finally:
         db.close()
+
+# jwt token
+SECRET_KEY = 'TestKEY'
+ALGORITHM = 'HS256'
+ACCESS_EXPIRE_MINUTES = 600
