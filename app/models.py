@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Text, DateTime
 
-from database import Base
+from app.database import Base
 
 # DB 유저 데이터
 class User(Base):

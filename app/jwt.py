@@ -1,9 +1,10 @@
 from datetime import datetime, timedelta
 from typing import Optional
 from jose import jwt
-from database import SECRET_KEY,ALGORITHM,ACCESS_EXPIRE_MINUTES
+from app.database import SECRET_KEY,ALGORITHM,ACCESS_EXPIRE_MINUTES
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi import Request, HTTPException
+# from schema import create_response
 
 
 # JWT 토큰 반환
@@ -37,14 +38,14 @@ class JWT_check(HTTPBearer):
         if check:
             if not check.scheme == "Bearer":
                 raise HTTPException(
-                    status_code=403, detail="유효하지 않은 스키마야")
+                    status_code=403, detail="유효하지 않은 토큰입니다.")
             if not self.verfity_jwt(check.credentials):
                 raise HTTPException(
-                    status_code=403, detail="만료된 토큰이야")
+                    status_code=403, detail="유효하지 않은 토큰입니다.")
             return check.credentials
         else:
             raise HTTPException(
-                status=403, detail="유효하지 않은 코드야.")
+                status=403, detail="유효하지 않은 토큰입니다.")
 
     # JWT토큰의 페이로드를 확인
     def verfity_jwt(Self, jwttoken: str):

@@ -1,10 +1,10 @@
 from fastapi import APIRouter,Depends
-from models import User
-from database import get_db
-from schema import User_Model, create_response
+from app.models import User
+from app.database import get_db
+from app.schema import User_Model, create_response
 from sqlalchemy.orm import Session
 from passlib.context import CryptContext
-from jwt import get_token,JWT_check
+from app.jwt import get_token,JWT_check
 from datetime import timedelta
 import re
 
@@ -22,9 +22,9 @@ def join(data:User_Model, db: Session = Depends(get_db)):
     if not re.match(r'010\d{4}\d{4}$', id):
         return create_response(None, 400, '유효하지 않은 번호 입니다.')
     # 비밀번호 암호화
-    password = pwd_context.hash(data['password'])
+    data['password'] = pwd_context.hash(data['password'])
 
-    db.add(User(phone_num = id, password = password))
+    db.add(User(**data))
     db.commit()
 
     return create_response(None, 200, '회원 가입에 성공하셨습니다.')
@@ -52,3 +52,11 @@ def logout():
     token = get_token({}, timedelta(seconds=30))
     result = {'token':token}
     return create_response(result, 200, '로그아웃 완료!')
+
+# 유저 삭제(테스트 코드용)
+@router.delete('/delete/{user_id}')
+def user_delete(user_id : int, db: Session = Depends(get_db)):
+    item = db.query(User).filter(User.user_id == user_id).first()
+    db.delete(item)
+    db.commit()
+    return create_response(None, 200, '테스트 유저 삭제 완료!')

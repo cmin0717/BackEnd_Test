@@ -5,6 +5,7 @@ from datetime import datetime
 
 # 유저 관련
 class User_Model(BaseModel):
+    user_id: Optional[int]
     phone_num:str
     password:str
 

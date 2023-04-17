@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import declarative_base
 
 DB_URL = "mysql://root:4856@localhost:3306/payhere"
 engine = create_engine(DB_URL, pool_recycle=900)
