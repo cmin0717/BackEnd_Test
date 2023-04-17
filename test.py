@@ -17,10 +17,10 @@ def initial_chcek(words, initial):
             imf = j2hcj(temp)  # init,middle,final
             print(f"{temp}, {imf}")
             m.append(imf[0])
-        result.append([''.join(m), word])
+        print(''.join(m))
     print(result)
-    if 'ㅅㅋㄹ' in result[0][0]:
-        print(1)
+    # if 'ㅅㅋㄹ' in result[0][0]:
+    #     print(1)
     return
 
 initial_chcek(['슈크림 붕어빵', '삼성 전자'], 2)
