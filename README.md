@@ -1,5 +1,9 @@
 # Payhere - Test
 ## 기간 23.04.13 ~ 23.04.18
+### git clone
+```
+git clone https://github.com/cmin0717/BackEnd_Test.git
+```
 ### 도커로 실행
 ```
 docker-compose up
