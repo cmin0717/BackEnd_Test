@@ -4,7 +4,7 @@
 ```
 git clone https://github.com/cmin0717/BackEnd_Test.git
 ```
-### 도커로 실행
+### docker 실행
 ```
 docker-compose up
 ```
@@ -52,3 +52,9 @@ product의 api는 JWT토큰이 없다면 접근하지 못한다.
 2. 해당 유저의 상품명에 타이핑된 값이 있다면 리스트로 관리
 3. like 검색 이후 검색된 상품이 1개도 없다면 초성 검색을 실행
 4. 모든 검색후 조건에 맞게 전달
+
+## 테스트 코드
+작성된 테스트 코드 실행
+```
+pytest
+```
