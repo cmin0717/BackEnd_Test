@@ -1,17 +1,18 @@
 version: '3.8'
+
 services:
   db:
+    container_name: db
     image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: 4856
-      MYSQL_DATABASE: payhere
+      - MYSQL_DATABASE=payhere
+      - MYSQL_ROOT_PASSWORD=4856
     ports:
-      - "3306:3306"
-  app:
-    build: .
+      - "3307:3306"
+  server:
+    container_name: "server"
+    build: .    
     ports:
       - "8080:8000"
     depends_on:
       - db
-    environment:
-      DB_URL: mysql://root:4856@db:3306/payhere

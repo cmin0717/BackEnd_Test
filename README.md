@@ -1,5 +1,7 @@
 # Payhere - Test
-
+```
+docker-compose up
+```
 # API
 ## AUTH
 ### 회원가입 - "/auth/join" - POST
